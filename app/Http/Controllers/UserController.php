@@ -30,4 +30,9 @@ class UserController extends Controller
 
         return redirect()->route('admin.users.index')->with('success', 'Role pengguna berhasil diupdate.');
     }
+    // Di dalam class UserController
+    public function showLoginForm()
+    {
+        return view('auth.login'); // Kita akan buat view ini
+    }
 }
