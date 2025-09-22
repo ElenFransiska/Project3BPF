@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController; // <-- Tambahkan baris ini
+use App\Http\Controllers\UserController; // Jangan lupa tambahkan ini di atas
 
-// Alamat untuk menampilkan halaman menu
-Route::get('/menu-restoran', [AdminController::class, 'tampilkanHalamanMenu']);
+Route::prefix('admin/users')->name('admin.users.')->group(function () {
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::get('/{user}/edit', [UserController::class, 'edit'])->name('edit');
+    Route::put('/{user}', [UserController::class, 'update'])->name('update');
+});
 
